@@ -123,7 +123,7 @@ module MCollective
 
       def git_reset(revision, work_tree)
         from = run "git --git-dir=#{git_dir} --work-tree=#{work_tree} rev-parse HEAD"
-        run "git --git-dir=#{git_dir} --work-tree=#{work_tree} reset --hard #{revision}"
+        run "git --git-dir=#{git_dir} --work-tree=#{work_tree} checkout origin/#{revision}"
         run "git --git-dir=#{git_dir} --work-tree=#{work_tree} clean -dxf"
         to = run "git --git-dir=#{git_dir} --work-tree=#{work_tree} rev-parse HEAD"
         { :from => from, :to => to }
